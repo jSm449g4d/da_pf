@@ -29,7 +29,7 @@ def n2k_naka(input_number=0):
         return_kanzi+=n2k_simo(input_number//100)+"百"
         input_number%=100
     if input_number//10>0:
-        return_kanzi+=n2k_simo(input_number//10)+"捨"
+        return_kanzi+=n2k_simo(input_number//10)+"拾"
         input_number%=10
     if input_number//1>0:
         return_kanzi+=n2k_simo(input_number//1)

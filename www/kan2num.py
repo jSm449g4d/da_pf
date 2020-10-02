@@ -2,7 +2,7 @@ import flask
 from werkzeug.utils import secure_filename
 def n2k_simo(input_kanzi=""):
     if len(input_kanzi)>1:
-        raise
+        raise 
     if input_kanzi=="壱":
         return 1
     if input_kanzi=="弐":
@@ -40,10 +40,10 @@ def k2n(input_kanzi=""):
     if input_kanzi=="零":
         return 0
     if len(input_kanzi.split("兆"))==2:
-        return_number+=1000000000000
+        return_number+=1000000000000*k2n_naka(input_kanzi.split("兆")[0])
         input_kanzi=input_kanzi.split("兆")[1]
     if len(input_kanzi.split("億"))==2:
-        return_number+=100000000
+        return_number+=100000000*k2n_naka(input_kanzi.split("億")[0])
         input_kanzi=input_kanzi.split("億")[1]
     if len(input_kanzi.split("万"))==2:
         return_number+=10000*k2n_naka(input_kanzi.split("万")[0])
@@ -55,6 +55,9 @@ def k2n(input_kanzi=""):
 def show(value):
     try:
         return k2n(value),200
+    
+    except Exception as e:
+        return flask.render_template("error.html", STATUS_ERROR_TEXT=str(e)), 500
     except:
         return "変換できません", 204
     return "OK", 200
