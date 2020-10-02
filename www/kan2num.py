@@ -55,9 +55,6 @@ def k2n(input_kanzi=""):
 def show(value):
     try:
         return k2n(value),200
-    
-    except Exception as e:
-        return flask.render_template("error.html", STATUS_ERROR_TEXT=str(e)), 500
     except:
         return "変換できません", 204
     return "OK", 200
