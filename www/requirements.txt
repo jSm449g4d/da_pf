@@ -4,10 +4,6 @@ setuptools
 
 # server
 flask
-psutil
 waitress
 werkzeug
 
-# application
-urllib3
-certifi
