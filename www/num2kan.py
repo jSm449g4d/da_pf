@@ -1,9 +1,5 @@
 import flask
 from werkzeug.utils import secure_filename
-import json
-import importlib
-import datetime
-from datetime import timedelta
 def n2k_simo(input_number=0):
     if input_number==1:
         return "壱"
