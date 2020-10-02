@@ -4,8 +4,7 @@ import json
 import importlib
 import datetime
 from datetime import timedelta
-def n2k_simo(input_number):
-    input_number=int(input_number)
+def n2k_simo(input_number=0):
     if input_number==1:
         return "壱"
     if input_number==2:
@@ -25,8 +24,7 @@ def n2k_simo(input_number):
     if input_number==9:
         return "九"
     return "零"
-def n2k_naka(input_number):
-    input_number=int(input_number)
+def n2k_naka(input_number=0):
     return_kanzi=""
     if input_number//1000>0:
         return_kanzi+=n2k_simo(input_number//1000)+"千"
@@ -40,8 +38,7 @@ def n2k_naka(input_number):
     if input_number//1>0:
         return_kanzi+=n2k_simo(input_number//1)
     return return_kanzi
-def n2k(input_number):
-    input_number=int(input_number)
+def n2k(input_number=0):
     return_kanzi=""
     if input_number==0:
         return "零"
@@ -59,7 +56,7 @@ def n2k(input_number):
     return return_kanzi
 def show(value):
     try:
-        return n2k(value), 200
+        return n2k(int(value)), 200
     except:
         return "変換できません", 204
     return "OK", 200
