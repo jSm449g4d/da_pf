@@ -9,6 +9,5 @@ waitress
 werkzeug
 
 # application
-newsapi-python
 urllib3
 certifi

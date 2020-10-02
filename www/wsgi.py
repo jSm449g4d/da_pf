@@ -22,10 +22,17 @@ def indexpage_show():
     except Exception as e:
         return flask.render_template("error.html", STATUS_ERROR_TEXT=str(e)), 500
 
-@app.route("/v1/<path:value>", methods=["GET", "POST"])
-def api_show(value):
+@app.route("/v1/number2kanji/<path:value>", methods=["GET", "POST"])
+def num2kan_show(value):
     try:
-        return importlib.import_module("henkan").show(value)
+        return importlib.import_module("num2kan").show(value)
+    except Exception as e:
+        return flask.render_template("error.html", STATUS_ERROR_TEXT=str(e)), 500
+
+@app.route("/v1/kanji2number/<path:value>", methods=["GET", "POST"])
+def kan2num_show(value):
+    try:
+        return importlib.import_module("kan2num").show(value)
     except Exception as e:
         return flask.render_template("error.html", STATUS_ERROR_TEXT=str(e)), 500
 

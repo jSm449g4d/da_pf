@@ -2,7 +2,6 @@ import flask
 from werkzeug.utils import secure_filename
 import json
 import importlib
-from newsapi import NewsApiClient
 import datetime
 from datetime import timedelta
 def n2k_simo(input_number):
@@ -37,10 +36,7 @@ def n2k(input_number):
     return return_kanzi
 def show(value):
     try:
-        if value.split("/")[0]=="number2kanji":
-            return n2k(value.split("/")[1]), 200
-        if value.split("/")[0]=="kanji2number":
-            return value.split("/")[1], 200
+        return n2k(value), 200
     except:
         return "変換できません", 204
     return "OK", 200
