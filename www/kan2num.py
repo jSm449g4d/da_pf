@@ -1,6 +1,8 @@
 import flask
 from werkzeug.utils import secure_filename
 def n2k_simo(input_kanzi=""):
+    if len(input_kanzi)>1:
+        raise
     if input_kanzi=="壱":
         return 1
     if input_kanzi=="弐":
@@ -47,6 +49,8 @@ def k2n(input_kanzi=""):
         return_number+=10000*k2n_naka(input_kanzi.split("万")[0])
         input_kanzi=input_kanzi.split("万")[1]
     return_number+=k2n_naka(input_kanzi)
+    if return_number==0:
+        raise
     return str(return_number)
 def show(value):
     try:
